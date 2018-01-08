@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">SmartClicker</string>
+    <string name="device_icon">Device Icon</string>
+    <string name="primary_text">Primary Text</string>
+    <string name="secondary_text">Secondary Text</string>
+    <string name="navigator_arrow_up">UP</string>
+    <string name="navigator_arrow_right">RIGHT</string>
+    <string name="navigator_arrow_down">DOWN</string>
+    <string name="navigator_arrow_left">LEFT</string>
+    <string name="navigator_ok">OK</string>
+</resources>
