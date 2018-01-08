@@ -1,0 +1,9 @@
+<resources>
+    <dimen name="item_height">72dp</dimen>
+    <dimen name="icon_left_padding">16dp</dimen>
+    <dimen name="text_left_padding">72dp</dimen>
+    <dimen name="text_right_padding">16dp</dimen>
+    <dimen name="padding_above_list">8dp</dimen>
+    <dimen name="primary_text">16sp</dimen>
+    <dimen name="secondary_text">14sp</dimen>
+</resources>

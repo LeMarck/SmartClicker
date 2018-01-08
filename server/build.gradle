@@ -1,0 +1,40 @@
+apply plugin: 'kotlin'
+apply plugin: 'application'
+
+mainClassName = 'com.github.lemarck.smartclicker.MainAppKt'
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+String bluecove
+switch(System.getProperty('os.name').toLowerCase().split()[0]) {
+    case 'mac':
+        bluecove = 'bluecove-2.1.2'
+        break
+    default:
+        bluecove = 'bluecove-2.1.1-SNAPSHOT'
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile name: bluecove
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "4.4"
+}
