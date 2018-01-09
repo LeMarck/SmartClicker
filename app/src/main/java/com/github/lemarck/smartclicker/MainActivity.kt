@@ -6,11 +6,13 @@ import android.bluetooth.BluetoothAdapter
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.github.lemarck.smartclicker.fragments.DeviceListFragment
-import com.github.lemarck.smartclicker.utils.PermissionManager
+import android.support.v7.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var adapter: DeviceListAdapter
+
     private val REQUEST_ENABLE_BT = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,10 +27,23 @@ class MainActivity : AppCompatActivity() {
         setTheme(R.style.AppTheme_NoActionBar)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        fragmentManager
-                .beginTransaction()
-                .add(R.id.container, DeviceListFragment())
-                .commit()
+
+        adapter = DeviceListAdapter(this)
+        devices.layoutManager = LinearLayoutManager(this)
+        devices.adapter = adapter
+    }
+
+    override fun onResume() {
+        BluetoothAdapter
+                .getDefaultAdapter()
+                .bondedDevices
+                .forEach { adapter.addDevice(it) }
+        super.onResume()
+    }
+
+    override fun onPause() {
+        adapter.clearDevices()
+        super.onPause()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

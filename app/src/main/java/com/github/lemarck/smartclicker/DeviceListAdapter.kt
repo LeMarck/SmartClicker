@@ -1,17 +1,16 @@
-package com.github.lemarck.smartclicker.adapters
+package com.github.lemarck.smartclicker
 
 import android.app.Activity
 import android.bluetooth.BluetoothClass
 import android.bluetooth.BluetoothDevice
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.github.lemarck.smartclicker.R
-import com.github.lemarck.smartclicker.fragments.ClickerFragment
-import kotlinx.android.synthetic.main.device_list_item.view.*
+import kotlinx.android.synthetic.main.device_info.view.*
 
 
 class DeviceListAdapter(private val activity: Activity) : RecyclerView.Adapter<DeviceListAdapter.ViewHolder>() {
@@ -22,7 +21,7 @@ class DeviceListAdapter(private val activity: Activity) : RecyclerView.Adapter<D
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.device_list_item, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.device_info, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -59,10 +58,9 @@ class DeviceListAdapter(private val activity: Activity) : RecyclerView.Adapter<D
         init {
             itemView.setOnClickListener {
                 try {
-                    activity.fragmentManager
-                            .beginTransaction()
-                            .replace(R.id.container, ClickerFragment.newInstance(address.text.toString()))
-                            .commit()
+                    val intent = Intent(activity, ClickerActivity::class.java)
+                    intent.putExtra(ClickerActivity.ADDRESS, address.text.toString())
+                    activity.startActivity(intent)
                 }
                 catch (e: Error) {
                     // TODO: Обработка ошибки

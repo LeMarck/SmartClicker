@@ -4,10 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.github.lemarck.smartclicker.MainActivity">
-    
-    <FrameLayout
-        android:id="@+id/container"
+
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:id="@+id/devices"
+        android:paddingTop="@dimen/padding_above_list"
+        android:paddingBottom="@dimen/padding_above_list" />
 
 </android.support.constraint.ConstraintLayout>

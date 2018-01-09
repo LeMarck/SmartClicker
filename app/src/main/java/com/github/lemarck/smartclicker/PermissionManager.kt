@@ -1,4 +1,4 @@
-package com.github.lemarck.smartclicker.utils
+package com.github.lemarck.smartclicker
 
 import android.app.Activity
 import android.content.pm.PackageManager

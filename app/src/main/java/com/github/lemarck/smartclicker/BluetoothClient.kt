@@ -1,4 +1,4 @@
-package com.github.lemarck.smartclicker.utils
+package com.github.lemarck.smartclicker
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothSocket
